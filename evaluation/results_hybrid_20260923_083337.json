@@ -1,0 +1,158 @@
+{
+  "config": "hybrid",
+  "metrics": {
+    "faithfulness": 1.0,
+    "answer_relevancy": 0.9381,
+    "context_precision": 0.9722,
+    "context_recall": 1.0
+  },
+  "refusal": {
+    "refusal_questions": 0,
+    "correct_refusals": 0,
+    "refusal_rate": 0.0,
+    "details": []
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What is the Enterprise Document RAG Chatbot according to the executive summary?",
+      "answer": "The Enterprise Document RAG Chatbot is an internal knowledge assistant that allows employees to ask natural-language questions and receive accurate, grounded answers pulled directly from company documents. Each answer is backed by a clickable source and page number, ensuring that nothing is taken on faith. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy."
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 4
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 8
+        }
+      ],
+      "ground_truth": "The Enterprise Document RAG Chatbot is an internal knowledge assistant that lets employees ask natural-language questions and get accurate, grounded answers pulled directly from company documents, with each answer backed by a clickable source and page number.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q002",
+      "question": "What is the document owner and status of the PRD?",
+      "answer": "The document owner of the PRD is the Product/Engineering Lead, and the status is Draft v1.0. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "Security\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy\nNodocument content sent to third partiesbeyond the configured LLMprovider; PII\nhandlingdocumented\nAuditability\nEvery generatedanswer is traceableto exact sourcechunksused\nMaintainability\nModularpipeline (ingestion /retrieval /generation are independently swappable)\nObservability\nStructured logging of queries, retrieval hits, latencies, and evaluation scores",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations.",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin"
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 4,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "The document owner is Product/Engineering Lead, and the status is Draft v1.0, last updated September 13, 2026.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q003",
+      "question": "Who are the designated stakeholders for this project?",
+      "answer": "The designated stakeholders for the project are Engineering, Data/ML, Design, Compliance, and End Users. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semantic chunking; evaluate\nawkwardly\ncontext recall regularly\nMedium\nMedium\nLatencygrows with corpus\nIndexsharding,cachingfrequentqueries,async\nsize\nretrieval\nSensitive document leakage\nLow\nHigh\nData processing agreement with LLM provider;\nvia LLM API\nconsider self-hosted embeddings for sensitive\ncorpora\nHigh\nMedium\nLow adoption dueto\"just\nInvest in the differentiated, non-generic UI\nanotherchatbot\"perception\n(Section 11) and clear ROI messaging\n14.Milestones & Rollout Plan\nMilestone\nPhase\nDuration\nPhase 0\nRequirementsfinalization,corpus selection,goldentestsetcreation\n1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline\nHybrid retrieval (dense embeddings + BM25)\nCross-encoder re-ranking\nContextual prompt construction with conversational memory\nFastAPIbackendwithRESTendpoints"
+      ],
+      "context_metas": [
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "page_number": 10,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "The stakeholders are Engineering, Data/ML, Design, Compliance, and End Users.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    }
+  ]
+}

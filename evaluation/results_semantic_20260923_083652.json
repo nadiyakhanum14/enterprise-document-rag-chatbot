@@ -1,0 +1,1051 @@
+{
+  "config": "semantic",
+  "metrics": {
+    "faithfulness": 0.9028,
+    "answer_relevancy": 0.7937,
+    "context_precision": 0.9465,
+    "context_recall": 0.9194
+  },
+  "refusal": {
+    "refusal_questions": 4,
+    "correct_refusals": 4,
+    "refusal_rate": 1.0,
+    "details": [
+      {
+        "id": "Q019",
+        "question": "What is the company's maternity leave and paternity leave allowance?",
+        "refused_correctly": true,
+        "answer_preview": "I don't have enough information in the provided documents to answer that."
+      },
+      {
+        "id": "Q020",
+        "question": "What is the capital city of France?",
+        "refused_correctly": true,
+        "answer_preview": "I don't have enough information in the provided documents to answer that."
+      },
+      {
+        "id": "Q021",
+        "question": "What is the total quarterly budget allocated in USD for cloud infrastructure?",
+        "refused_correctly": true,
+        "answer_preview": "I don't have enough information in the provided documents to answer that."
+      },
+      {
+        "id": "Q022",
+        "question": "Who is the Chief Executive Officer (CEO) of the enterprise?",
+        "refused_correctly": true,
+        "answer_preview": "I don't have enough information in the provided documents to answer that."
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What is the Enterprise Document RAG Chatbot according to the executive summary?",
+      "answer": "The Enterprise Document RAG Chatbot is an internal knowledge assistant that allows employees to ask natural-language questions and receive accurate, grounded answers pulled directly from company documents. Each answer is backed by a clickable source and page number, ensuring that nothing is taken on faith. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations.",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy"
+      ],
+      "context_metas": [
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        },
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "The Enterprise Document RAG Chatbot is an internal knowledge assistant that lets employees ask natural-language questions and get accurate, grounded answers pulled directly from company documents, with each answer backed by a clickable source and page number.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q002",
+      "question": "What is the document owner and status of the PRD?",
+      "answer": "The document owner of the PRD is the Product/Engineering Lead, and the status is Draft v1.0. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com",
+        "I canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin\nView retrieval/answer qualitymetrics\nI can catch quality regressions early\n06\nUS-\nEmployee\nGeta clear\"I don'tknow\"insteadofa\nI'm notmisledby afabricated\n07\nguess\nanswer\n7. Functional Requirements\n7.1DocumentIngestion Pipeline\nFR-1: System shall accept PDF uploads (single or bulk) via the admin panel.",
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin"
+      ],
+      "context_metas": [
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 11,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 4
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 4
+        }
+      ],
+      "ground_truth": "The document owner is Product/Engineering Lead, and the status is Draft v1.0, last updated September 13, 2026.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q003",
+      "question": "Who are the designated stakeholders for this project?",
+      "answer": "The designated stakeholders for the project are Engineering, Data/ML, Design, Compliance, and End Users. \n\nSources:\n- RAGG.pdf \u2014 Page 1",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterpr\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com"
+      ],
+      "context_metas": [
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 4
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11
+        }
+      ],
+      "ground_truth": "The stakeholders are Engineering, Data/ML, Design, Compliance, and End Users.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q004",
+      "question": "What core problem statement and pain points does this system address?",
+      "answer": "The core problem statement addresses the issue of knowledge being locked in unsearchable PDFs, which leads to difficulties in searching documents. The pain points include:\n\n1. Loss of trust and risk in compliance-sensitive contexts due to generic LLM chatbots hallucinating or fabricating answers.\n2. Lack of traceability to source material, making it impossible to verify or cite answers in decisions or audits.\n3. Inability to measure answer quality over time, leading to uncertainty about system improvement.\n4. Low adoption of off-the-shelf AI tools in professional and enterprise settings, as they appear to be toy-like.\n\nSources:\n- RAGG.pdf \u2014 Page 2",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2,
+          "snippet": "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semantic chunking; evaluate\nawkwardly\ncontext recall regularly\nMedium\nMedium\nLatencygrows with corpus\nIndexsharding,cachingfrequentqueries,async\nsize\nretrieval\nSensitive document leakage\nLow\nHigh\nData processing agreement with LLM provider;\nvia LLM API\nconsider self-hosted embeddings for sensitive\ncorpora\nHigh\nMedium\nLow adoption dueto\"just\nInvest in the differentiated, non-generic UI\nanotherchatbot\"perception\n(Section 11) and clear ROI messaging\n14.Milestones & Rollout Plan\nMilestone\nPhase\nDuration\nPhase 0\nRequirementsfinalization,corpus selection,goldentestsetcreation\n1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations."
+      ],
+      "context_metas": [
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "Knowledge is locked in unsearchable PDFs causing employees to waste time searching, generic LLM chatbots hallucinate or fabricate answers causing loss of trust, and answers lack traceability to source material so they cannot be verified in decisions or audits.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 2,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q005",
+      "question": "What are the non-goals explicitly listed as out of scope for v1?",
+      "answer": "The non-goals explicitly listed as out of scope for v1 are:\n1. Multi-modal input (images, scanned handwriting, video).\n2. Real-time document editing or write-back into source PDFs.\n3. Public-facing/external customer deployment.\n4. Multi-tenant SaaS billing infrastructure.\n\nSources:\n- RAGG.pdf \u2014 Page 2",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2,
+          "snippet": "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline\nHybrid retrieval (dense embeddings + BM25)\nCross-encoder re-ranking\nContextual prompt construction with conversational memory\nFastAPIbackendwithRESTendpoints"
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "Non-goals out of scope for v1 are: multi-modal input (images, scanned handwriting, video), real-time document editing or write-back into source PDFs, public-facing or external customer deployment, and multi-tenant SaaS billing infrastructure.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 2,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q006",
+      "question": "What are the target KPIs for RAGAS faithfulness, answer relevancy, and query latency?",
+      "answer": "The target KPIs for RAGAS are as follows:\n- Faithfulness: \u22650.85\n- Answer Relevancy: \u22650.85\n- P95 query latency: \u22644 seconds\n\nSources:\n- RAGG.pdf \u2014 Page 3",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3,
+          "snippet": "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations."
+      ],
+      "context_metas": [
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        }
+      ],
+      "ground_truth": "Faithfulness target is \u22650.85, Answer Relevancy target is \u22650.85, Context Precision target is \u22650.80, Context Recall target is \u22650.80, and P95 query latency is \u22644 seconds.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 3,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q007",
+      "question": "Who is Raj and what does he value in the tool?",
+      "answer": "Raj is a new hire in Operations. He needs fast answers to \"how do we do X\" without pinging senior staff and values speed and simplicity over configurability in the tool.\n\nSources:\n- RAGG.pdf \u2014 Page 3",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3,
+          "snippet": "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop)."
+      ],
+      "context_metas": [
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        }
+      ],
+      "ground_truth": "Raj is a New Hire in Operations who needs fast answers to 'how do we do X' without pinging senior staff, and he values speed and simplicity over configurability.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 3,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q008",
+      "question": "Who is Priya and what are her requirements?",
+      "answer": "Priya is a Compliance Analyst. Her requirements include needing precise, page-cited answers from policy documents for audit trails and having zero tolerance for hallucination. \n\nSources:\n- RAGG.pdf \u2014 Page 3",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3,
+          "snippet": "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "I canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin\nView retrieval/answer qualitymetrics\nI can catch quality regressions early\n06\nUS-\nEmployee\nGeta clear\"I don'tknow\"insteadofa\nI'm notmisledby afabricated\n07\nguess\nanswer\n7. Functional Requirements\n7.1DocumentIngestion Pipeline\nFR-1: System shall accept PDF uploads (single or bulk) via the admin panel.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure."
+      ],
+      "context_metas": [
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 4,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "Priya is a Compliance Analyst who needs precise, page-cited answers from policy documents for audit trails, with zero tolerance for hallucination.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 3,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q009",
+      "question": "What should the system return when retrieval confidence is low, according to FR-11?",
+      "answer": "The system shall return \"I don't have enough information in the provided documents\" when retrieval confidence is low, rather than fabricating an answer.  \nSources:  \n- RAGG.pdf \u2014 Page 5",
+      "sources": [],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "precision, context recall) on a curated Q&A test set.\nFR-20: System shall log evaluation results over time to detect regressions after pipeline\nchanges.",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2\nHybrid retrieval + re-ranking implementation\n2 weeks\nPhase3\nGeneration pipeline+FastAPIbackend\n2 weeks\nPhase 4\nCustom UI build (workspace-style,non-generic)\n3 weeks\nPhase 5\nRAGAS evaluation integration + tuning loop\n1-2 weeks\nPhase6\nInternal pilot with one department\n2 weeks\nPhase 7\nFeedbackincorporation+GArollout\n1-2 weeks\nTotal estimated timeline: ~13-15 weeks"
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3
+        },
+        {
+          "page_number": 10,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "According to FR-11, the system shall return \"I don't have enough information in the provided documents\" when retrieval confidence is low, rather than fabricating an answer.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 5,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q010",
+      "question": "What are the backend REST endpoints specified under Section 7.4?",
+      "answer": "The backend REST endpoints specified under Section 7.4 are:\n\n1. POST /documents/upload - accepts PDF files for ingestion.\n2. GET /documents - lists indexed documents with metadata.\n3. DELETE /documents/(id) - removes a document and its vectors from the index.\n4. GET /sessions/(id)/history - retrieves conversation history.\n5. GET /health - system health/status endpoint.\n\nSources:\n- RAGG.pdf \u2014 Page 5",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 5,
+          "snippet": "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fa\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Security\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy\nNodocument content sent to third partiesbeyond the configured LLMprovider; PII\nhandlingdocumented\nAuditability\nEvery generatedanswer is traceableto exact sourcechunksused\nMaintainability\nModularpipeline (ingestion /retrieval /generation are independently swappable)\nObservability\nStructured logging of queries, retrieval hits, latencies, and evaluation scores",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        "9. System Architecture\nStreamlit /Web\nChat UI (Custom)\nREST/WebSocket\nFastAPI Backend\n(orchestrationlayer)\nIngestion\nRetrieval\nGeneration\nPipeline\nEngine\nEngine\n(parse/chunk)\nHybrid+Rerank\nChromaDB\nIndex\nBM25\nOpenAI\nAPI\n(keyword)\nvectol\nstore\nLLM\nRAGAS Evaluation\nPipeline(offline)",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com",
+        ":FR-2: System shall parse PDF text while preserving page numbers and section structure.\ntokens with overlap) to preserve context continuity.\nFR-4: System shall generate embeddings for each chunk and store them in ChromaDB\nalongside metadata (document name, page number, section heading, chunk ID).\nFR-5: System shall build/update a BM25 keyword index in parallel with the vector index.\n7.2 Retrieval\nFR-7: System shall merge and re-rank candidates using a cross-encoder model, returning\nthe top-k most relevant chunks.\nFR-8: System shall support configurable top-k and retrieval weighting (semantic vs.\nkeyword) via backend config.\n7.3 Generation\nFR-9: System shall construct a grounded prompt using only retrieved context plus recent\nconversation history.\nFR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X]."
+      ],
+      "context_metas": [
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 7
+        },
+        {
+          "page_number": 11,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 5
+        }
+      ],
+      "ground_truth": "The endpoints are POST /documents/upload for PDF ingestion, GET /documents for listing indexed documents, DELETE /documents/{id} for removing documents, GET /sessions/{id}/history for conversation history, and GET /health for system health status.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 5,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q011",
+      "question": "What technologies are used in the technology stack for Vector Store, Keyword Search, and Re-ranking?",
+      "answer": "The technologies used in the technology stack for Vector Store, Keyword Search, and Re-ranking are as follows:\n\n- Vector Store: ChromaDB\n- Keyword Search: BM25 (rank-bm25/Elasticsearch for scale)\n- Re-ranking: Cross-encoder (e.g., ms-marco-MiniLM)\n\nSources:\n- RAGG.pdf \u2014 Page 8",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 8,
+          "snippet": "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-e\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "9. System Architecture\nStreamlit /Web\nChat UI (Custom)\nREST/WebSocket\nFastAPI Backend\n(orchestrationlayer)\nIngestion\nRetrieval\nGeneration\nPipeline\nEngine\nEngine\n(parse/chunk)\nHybrid+Rerank\nChromaDB\nIndex\nBM25\nOpenAI\nAPI\n(keyword)\nvectol\nstore\nLLM\nRAGAS Evaluation\nPipeline(offline)",
+        ":FR-2: System shall parse PDF text while preserving page numbers and section structure.\ntokens with overlap) to preserve context continuity.\nFR-4: System shall generate embeddings for each chunk and store them in ChromaDB\nalongside metadata (document name, page number, section heading, chunk ID).\nFR-5: System shall build/update a BM25 keyword index in parallel with the vector index.\n7.2 Retrieval\nFR-7: System shall merge and re-rank candidates using a cross-encoder model, returning\nthe top-k most relevant chunks.\nFR-8: System shall support configurable top-k and retrieval weighting (semantic vs.\nkeyword) via backend config.\n7.3 Generation\nFR-9: System shall construct a grounded prompt using only retrieved context plus recent\nconversation history.\nFR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy."
+      ],
+      "context_metas": [
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 7
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 8,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "ChromaDB is used for the Vector Store, BM25 (rank-bm25/Elasticsearch for scale) is used for Keyword Search, and a Cross-encoder (e.g., ms-marco-MiniLM) is used for Re-ranking.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 8,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q012",
+      "question": "What is the UI/UX design principle regarding AI cliches?",
+      "answer": "The UI/UX design principle regarding AI cliches states that there should be \"No AI cliches,\" which includes avoiding robot/sparkle icons, purple-to-blue gradients, and phrases like \"Hi, I'm your AI assistant.\" \n\nSources:\n- RAGG.pdf \u2014 Page 8",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 8,
+          "snippet": "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-e\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "No AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy.\nWorkspace metaphor,not chat-toy metaphor:layout resembles a document workspace\n sidebar with conversation threads and document library, main panel for Q&A, right\npanel for source preview.\nTypography-first, content-dense: clean serif/sans pairing, generous whitespace, but\ninformation-dense like an analyst tool (think Bloomberg Terminal meets Notion, not a\nmobile messaging app).\nCitations as first-class UIelements: inline citation chips (e.g., CHR-Policy-2026, p. 12D)\nare clickable pills, not footnotes - clicking opens a side panel with the highlighted\nsource passage.\n Neutral, confident color palette: deep charcoal / off-white base, one restrained accent\ncolor (e.g., navy or forest green) - no neon, no default \"AI purple\"",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy.",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations.",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith."
+      ],
+      "context_metas": [
+        {
+          "page_number": 8,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 8,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        }
+      ],
+      "ground_truth": "No AI cliches: no robot/sparkle icons, no purple-to-blue gradients, and no 'Hi, I'm your AI assistant!' copy. The layout uses a workspace metaphor rather than a chat-toy metaphor.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 8,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q013",
+      "question": "How are source citations presented in the user interface according to Section 11?",
+      "answer": "Source citations in the user interface are presented as inline citation chips that appear as they are referenced in the conversation. Clicking on a citation opens a side panel with the highlighted source passage. \n\nSources:\n- RAGG.pdf \u2014 Page 9",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9,
+          "snippet": "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle trans\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations.",
+        "No AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy.\nWorkspace metaphor,not chat-toy metaphor:layout resembles a document workspace\n sidebar with conversation threads and document library, main panel for Q&A, right\npanel for source preview.\nTypography-first, content-dense: clean serif/sans pairing, generous whitespace, but\ninformation-dense like an analyst tool (think Bloomberg Terminal meets Notion, not a\nmobile messaging app).\nCitations as first-class UIelements: inline citation chips (e.g., CHR-Policy-2026, p. 12D)\nare clickable pills, not footnotes - clicking opens a side panel with the highlighted\nsource passage.\n Neutral, confident color palette: deep charcoal / off-white base, one restrained accent\ncolor (e.g., navy or forest green) - no neon, no default \"AI purple\"",
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy"
+      ],
+      "context_metas": [
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 8,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 5
+        },
+        {
+          "page_number": 4,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        }
+      ],
+      "ground_truth": "Citations are first-class UI elements: inline citation chips are clickable pills rather than footnotes, and clicking opens a side panel with the highlighted source passage.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 8,
+      "answer_in_docs": true,
+      "category": "specific_detail"
+    },
+    {
+      "id": "Q014",
+      "question": "What is the mitigation plan if the LLM hallucinates despite grounding constraints?",
+      "answer": "The mitigation plan if the LLM hallucinates despite grounding constraints includes using strict prompt constraints, an \"insufficient grounding information\" fallback, and faithfulness monitoring. \n\nSources:\n- RAGG.pdf \u2014 Page 10",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10,
+          "snippet": "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semant\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semantic chunking; evaluate\nawkwardly\ncontext recall regularly\nMedium\nMedium\nLatencygrows with corpus\nIndexsharding,cachingfrequentqueries,async\nsize\nretrieval\nSensitive document leakage\nLow\nHigh\nData processing agreement with LLM provider;\nvia LLM API\nconsider self-hosted embeddings for sensitive\ncorpora\nHigh\nMedium\nLow adoption dueto\"just\nInvest in the differentiated, non-generic UI\nanotherchatbot\"perception\n(Section 11) and clear ROI messaging\n14.Milestones & Rollout Plan\nMilestone\nPhase\nDuration\nPhase 0\nRequirementsfinalization,corpus selection,goldentestsetcreation\n1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "2.Problem Statement\nPain Point\nImpact\nKnowledgeislocked inunsearchablePDFs\nsearching documents\nGeneric LLM chatbots hallucinate or\nLoss of trust; risk in compliance-sensitive contexts\nfabricateanswers\nNo traceability to source material\nAnswers can't be verified or cited in decisions/audits\nNo way to measure answer quality over\nTeams can't tellif the system is actually improving\ntime\nOff-the-shelf AI tools look and feel like toys\nLow adoption in professional/enterprise settings\n3.Goals & Objectives\n3.1 Primary Goals\n1.Deliver grounded, citation-backed answersfrom enterprise PDF corpora.\nseconds.\n3. Achieve RAGAS faithfulness score \u22650.85 and context precision \u22650.80 on the\nevaluation set.\n4. Ship a UI that reads as a professional internal knowledge tool - not a generic chat\nwidget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com"
+      ],
+      "context_metas": [
+        {
+          "page_number": 10,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        },
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11
+        }
+      ],
+      "ground_truth": "The mitigation is strict prompt constraints combined with an 'insufficient information' refusal fallback and continuous faithfulness monitoring.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 10,
+      "answer_in_docs": true,
+      "category": "synthesis"
+    },
+    {
+      "id": "Q015",
+      "question": "What is the total estimated rollout timeline across all phases?",
+      "answer": "The total estimated timeline across all phases is approximately 13-15 weeks.\n\nSources:\n- RAGG.pdf \u2014 Page 10",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10,
+          "snippet": "1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2\nHybrid retrieval + re-ranking implementation\n2 weeks\nPhase3\nGeneration pipeline+FastAPIbackend\n2 weeks\nPhase 4\nCustom UI build (workspace-style,non-generic)\n3 weeks\nPhase 5\nR\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2\nHybrid retrieval + re-ranking implementation\n2 weeks\nPhase3\nGeneration pipeline+FastAPIbackend\n2 weeks\nPhase 4\nCustom UI build (workspace-style,non-generic)\n3 weeks\nPhase 5\nRAGAS evaluation integration + tuning loop\n1-2 weeks\nPhase6\nInternal pilot with one department\n2 weeks\nPhase 7\nFeedbackincorporation+GArollout\n1-2 weeks\nTotal estimated timeline: ~13-15 weeks",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "precision, context recall) on a curated Q&A test set.\nFR-20: System shall log evaluation results over time to detect regressions after pipeline\nchanges.",
+        "(not all at the end).\naction,nomascotillustrations.\n12.Evaluation Plan (RAGAS)\nMetric\nWhatit Measures\nTarget\nFaithfulness\n\u22650.85\nAnswer Relevancy\nIs the answer actually addressing the question asked?\n\u22650.85\nContextPrecision\nAre theretrieved chunks relevant (low noise)?\n\u22650.80\nContext Recall\nDid retrieval surface all the info needed to answerfully?\n\u22650.80\nProcess: Maintain a curated golden test set (50-100 Q&A pairs per document domain)\nstrategy, re-ranker swap, prompt update) and block deployment if scores regress beyond a\ndefined threshold (e.g., >5% drop).",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com"
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 9,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 11,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "The total estimated timeline is approximately 13-15 weeks across Phase 0 through Phase 7.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 10,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q016",
+      "question": "What are the open questions listed in Section 15 of the PRD?",
+      "answer": "The open questions listed in Section 15 of the PRD are:\n\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given data policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly Phase 2?\n4. What's the retention policy for conversation history/session logs?\n\nSources:\n- RAGG.pdf \u2014 Page 11",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11,
+          "snippet": "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy"
+      ],
+      "context_metas": [
+        {
+          "page_number": 11,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 3,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        }
+      ],
+      "ground_truth": "The open questions are: 1. Which document set(s) launch first (HR policies, legal contracts, or engineering docs)? 2. Is self-hosted embedding/LLM required for compliance or is OpenAI API acceptable? 3. Is per-user access control needed at launch or Phase 2? 4. What is the retention policy for conversation history and session logs?",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 11,
+      "answer_in_docs": true,
+      "category": "open_question"
+    },
+    {
+      "id": "Q017",
+      "question": "What external resources and links are documented in the Appendix?",
+      "answer": "The external resources and links documented in the Appendix are:\n\n- RAGAS: https://github.com/explodinggradients/ragas\n- LangChain: https://python.langchain.com\n- ChromaDB: https://www.trychroma.com\n\nSources:\n- RAGG.pdf \u2014 Page 11",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11,
+          "snippet": "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "FR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].\nFR-11: System shall return \"I don't have enough information in the provided documents\"\nwhen retrieval confidence is low, rather than fabricating an answer.\n FR-12: System shall maintain conversational memory (last N turns) to support follow-up\nquestions.\n7.4 Backend (FastAPI)\nFR-14: PosT /documents/upload accepts PDF files for ingestion.\nFR-15: GET /documents - lists indexed documents with metadata.\nFR-16: DELETE /documents/(id removes a document and its vectors from the index.\nFR-17:GET /sessions/(id)/history-retrieves conversation history.\nFR-18: GET /health system health/status endpoint.\n7.5 Evaluation\nFR-19: System shall run RAGAS evaluation (faithfulness,answer relevancy, context\nprecision, context recall) on a curated Q&A test set.",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        "Human tone in copy: system messages read like a knowledgeable colleague (\"No\nmention of this in the indexed documents - try rephrasing or check with HR directly\")\nratherthan assistant-speak.\nStatic, sturdy layout: minimal animation; only subtle transitions (fade-in for streaming\ntext, no bouncing avatars).\n11.2 Key Screens\n1. Workspace Home - document library grid with upload status, last-indexed date, page\ncounts.\n2. Q&A Thread View - left: thread list; center: conversation with inline citations; right\n(collapsible): source viewer.\n3. Source Viewer Panel - renders the actual PDF page with the cited passage highlighted.\n4. Admin/Quality Dashboard - RAGAS scores over time, ingestion status, query volume\ntrends.\n11.3 Interaction Details\nStreaming answers token-by-token, with citation chips appearing as they're referenced\n(not all at the end).\naction,nomascotillustrations.",
+        ":FR-2: System shall parse PDF text while preserving page numbers and section structure.\ntokens with overlap) to preserve context continuity.\nFR-4: System shall generate embeddings for each chunk and store them in ChromaDB\nalongside metadata (document name, page number, section heading, chunk ID).\nFR-5: System shall build/update a BM25 keyword index in parallel with the vector index.\n7.2 Retrieval\nFR-7: System shall merge and re-rank candidates using a cross-encoder model, returning\nthe top-k most relevant chunks.\nFR-8: System shall support configurable top-k and retrieval weighting (semantic vs.\nkeyword) via backend config.\n7.3 Generation\nFR-9: System shall construct a grounded prompt using only retrieved context plus recent\nconversation history.\nFR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X]."
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 5
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11
+        },
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 9
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 5
+        }
+      ],
+      "ground_truth": "The appendix lists RAGAS at https://github.com/explodinggradients/ragas, LangChain at https://python.langchain.com, and ChromaDB at https://www.trychroma.com.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 11,
+      "answer_in_docs": true,
+      "category": "factual"
+    },
+    {
+      "id": "Q018",
+      "question": "How does the system combine semantic search, BM25, and re-ranking in its retrieval pipeline?",
+      "answer": "The system combines semantic search with keyword search (hybrid retrieval), re-ranks results using a cross-encoder model for precision, and generates answers through an LLM constrained to the retrieved context. \n\nSources:\n- RAGG.pdf \u2014 Page 1\n- RAGG.pdf \u2014 Page 3",
+      "sources": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1,
+          "snippet": "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and\u2026"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3,
+          "snippet": "5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline\nHybrid retrieval (dense embeddings + BM25)\nCross-encoder re-ranking\nContextual prompt construction with conversational memory\nFastAPIbackendwithRESTendpoints\u2026"
+        }
+      ],
+      "retrieved_chunks": 5,
+      "contexts": [
+        ":FR-2: System shall parse PDF text while preserving page numbers and section structure.\ntokens with overlap) to preserve context continuity.\nFR-4: System shall generate embeddings for each chunk and store them in ChromaDB\nalongside metadata (document name, page number, section heading, chunk ID).\nFR-5: System shall build/update a BM25 keyword index in parallel with the vector index.\n7.2 Retrieval\nFR-7: System shall merge and re-rank candidates using a cross-encoder model, returning\nthe top-k most relevant chunks.\nFR-8: System shall support configurable top-k and retrieval weighting (semantic vs.\nkeyword) via backend config.\n7.3 Generation\nFR-9: System shall construct a grounded prompt using only retrieved context plus recent\nconversation history.\nFR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].",
+        "from company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.\nUnder the hood it combines semantic search with keyword search (hybrid retrieval), re-ranks\nresults with a cross-encoder for precision, and generates answers through an LLM constrained\nto the retrieved context. Quality is continuously measured with RAGAS metrics (faithfulness,\nrelevancy, precision, recall) rather than gut feel.\nauditable through an interface that feels like a polished internal tool, not a generic chatbot\ndemo.",
+        "9. System Architecture\nStreamlit /Web\nChat UI (Custom)\nREST/WebSocket\nFastAPI Backend\n(orchestrationlayer)\nIngestion\nRetrieval\nGeneration\nPipeline\nEngine\nEngine\n(parse/chunk)\nHybrid+Rerank\nChromaDB\nIndex\nBM25\nOpenAI\nAPI\n(keyword)\nvectol\nstore\nLLM\nRAGAS Evaluation\nPipeline(offline)",
+        "5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline\nHybrid retrieval (dense embeddings + BM25)\nCross-encoder re-ranking\nContextual prompt construction with conversational memory\nFastAPIbackendwithRESTendpoints",
+        "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semantic chunking; evaluate\nawkwardly\ncontext recall regularly\nMedium\nMedium\nLatencygrows with corpus\nIndexsharding,cachingfrequentqueries,async\nsize\nretrieval\nSensitive document leakage\nLow\nHigh\nData processing agreement with LLM provider;\nvia LLM API\nconsider self-hosted embeddings for sensitive\ncorpora\nHigh\nMedium\nLow adoption dueto\"just\nInvest in the differentiated, non-generic UI\nanotherchatbot\"perception\n(Section 11) and clear ROI messaging\n14.Milestones & Rollout Plan\nMilestone\nPhase\nDuration\nPhase 0\nRequirementsfinalization,corpus selection,goldentestsetcreation\n1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2"
+      ],
+      "context_metas": [
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "page_number": 7,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10
+        }
+      ],
+      "ground_truth": "The system combines semantic search (dense embeddings) with BM25 keyword search in hybrid retrieval, merges candidates with score fusion, and uses a cross-encoder to re-rank the top candidates for high precision before passing them to the LLM.",
+      "expected_source": "RAGG.pdf",
+      "expected_page": 1,
+      "answer_in_docs": true,
+      "category": "synthesis"
+    },
+    {
+      "id": "Q019",
+      "question": "What is the company's maternity leave and paternity leave allowance?",
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "sources": [],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        "15.Open Questions\n1. Which document set(s) launch first HR policies, legal contracts, or engineering docs?\n2. Self-hosted embedding/LLM required for compliance, or is OpenAI API acceptable given\ndata policies?\n3. Do we need per-user access control on specific document sets at launch, or is that strictly\nPhase 2?\n4. What's the retention policy for conversation history/session logs?\n16.Appendix\nRAGAS: https:llgithub.com/explodinggradients/ragas\n:LangChain: https://python.langchain.com\nChromaDB: https://www.trychroma.com",
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "Security\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy\nNodocument content sent to third partiesbeyond the configured LLMprovider; PII\nhandlingdocumented\nAuditability\nEvery generatedanswer is traceableto exact sourcechunksused\nMaintainability\nModularpipeline (ingestion /retrieval /generation are independently swappable)\nObservability\nStructured logging of queries, retrieval hits, latencies, and evaluation scores"
+      ],
+      "context_metas": [
+        {
+          "page_number": 2,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 11
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 1
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        }
+      ],
+      "ground_truth": "NOT_IN_DOCS",
+      "expected_source": null,
+      "expected_page": null,
+      "answer_in_docs": false,
+      "category": "not_in_docs"
+    },
+    {
+      "id": "Q020",
+      "question": "What is the capital city of France?",
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "sources": [],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "precision, context recall) on a curated Q&A test set.\nFR-20: System shall log evaluation results over time to detect regressions after pipeline\nchanges.",
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        ":FR-2: System shall parse PDF text while preserving page numbers and section structure.\ntokens with overlap) to preserve context continuity.\nFR-4: System shall generate embeddings for each chunk and store them in ChromaDB\nalongside metadata (document name, page number, section heading, chunk ID).\nFR-5: System shall build/update a BM25 keyword index in parallel with the vector index.\n7.2 Retrieval\nFR-7: System shall merge and re-rank candidates using a cross-encoder model, returning\nthe top-k most relevant chunks.\nFR-8: System shall support configurable top-k and retrieval weighting (semantic vs.\nkeyword) via backend config.\n7.3 Generation\nFR-9: System shall construct a grounded prompt using only retrieved context plus recent\nconversation history.\nFR-1O: System shall generate answers via LLM (OpenAI) constrained to cite sources\ninline as([Document Name, p. X].",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy."
+      ],
+      "context_metas": [
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "page_number": 6,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 5,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 8
+        }
+      ],
+      "ground_truth": "NOT_IN_DOCS",
+      "expected_source": null,
+      "expected_page": null,
+      "answer_in_docs": false,
+      "category": "not_in_docs"
+    },
+    {
+      "id": "Q021",
+      "question": "What is the total quarterly budget allocated in USD for cloud infrastructure?",
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "sources": [],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "7.6Frontend /UI\nFR-21: Chat interface shall display streaming responses with inline, clickable citations.\nFR-22: Clicking a citation shall open a source viewer showing the exact page/passage\nhighlighted.\nFR-23: Interface shall support multiple named conversation threads (sidebar history),\nlike a professional workspace tool.\nFR-24: Interface shall include a document library view (browse/search indexed files).\n FR-25: Interface shall support light/dark themes matching enterprise branding.\n8. Non-Functional Requirements\nCategory\nRequirement\nPerformance\nP95responselatency\u22644sforaqueryagainsta5o0-pagecorpus\nScalability\nSupport 10,000+ pages indexed, 50+ concurrent users\nReliability\n99.5% uptime for backend API\nSecurity\nDocuments and vector store encrypted at rest; APIauthenticated (API key or SsO in\nPhase 2)\nData Privacy",
+        "widget.\n3.2 Non-Goals (Out of Scope for v1)\nMulti-modalinput (images,scannedhandwriting,video).\nReal-timedocumentediting orwrite-backinto sourcePDFs.\nPublic-facing/externalcustomerdeployment.\n Multi-tenant Saas billing infrastructure.",
+        "1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2\nHybrid retrieval + re-ranking implementation\n2 weeks\nPhase3\nGeneration pipeline+FastAPIbackend\n2 weeks\nPhase 4\nCustom UI build (workspace-style,non-generic)\n3 weeks\nPhase 5\nRAGAS evaluation integration + tuning loop\n1-2 weeks\nPhase6\nInternal pilot with one department\n2 weeks\nPhase 7\nFeedbackincorporation+GArollout\n1-2 weeks\nTotal estimated timeline: ~13-15 weeks",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy.",
+        "13.Risks & Mitigations\nRisk\nLikelihood\nImpact\nMitigation\nLLM hallucination despite\nMedium\nHigh\nStrictpromptconstraints+\"insufficient\ngrounding\ninformation\"fallback+faithfulnessmonitoring\nMedium\nMedium\nPoor chunking splits context\nUse overlap + semantic chunking; evaluate\nawkwardly\ncontext recall regularly\nMedium\nMedium\nLatencygrows with corpus\nIndexsharding,cachingfrequentqueries,async\nsize\nretrieval\nSensitive document leakage\nLow\nHigh\nData processing agreement with LLM provider;\nvia LLM API\nconsider self-hosted embeddings for sensitive\ncorpora\nHigh\nMedium\nLow adoption dueto\"just\nInvest in the differentiated, non-generic UI\nanotherchatbot\"perception\n(Section 11) and clear ROI messaging\n14.Milestones & Rollout Plan\nMilestone\nPhase\nDuration\nPhase 0\nRequirementsfinalization,corpus selection,goldentestsetcreation\n1 week\nPhase1\nIngestionpipeline (parsing,chunking,indexing)\n2 weeks\nPhase 2"
+      ],
+      "context_metas": [
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 6
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 2
+        },
+        {
+          "page_number": 10,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "page_number": 8,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 10
+        }
+      ],
+      "ground_truth": "NOT_IN_DOCS",
+      "expected_source": null,
+      "expected_page": null,
+      "answer_in_docs": false,
+      "category": "not_in_docs"
+    },
+    {
+      "id": "Q022",
+      "question": "Who is the Chief Executive Officer (CEO) of the enterprise?",
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "sources": [],
+      "retrieved_chunks": 5,
+      "contexts": [
+        "Product Requirements Document (PRD)\nEnterprise Document RAG Chatbot\nDocument Owner\nProduct/Engineering Lead\nStatus\nDraft v1.0\nLast Updated\nSeptember 13,2026\nStakeholders\nEngineering, Data/ML, Design, Compliance, End Users\n1. Executive Summary\nEnterprise teams sit on thousands of pages of PDFs policy manuals, contracts, SOPs,\nresearch reports, compliance filings - that are searched manually or not searched at all.\nEmployees waste time hunting foranswersburied in documents, and when they dofind\nsomething,they oftencan'tverifywhereitcamefrom.\nThe Enterprise Document RAG Chatbot is an internal knowledge assistant that lets\nemployees ask natural-language questions and get accurate, grounded answers pulled directly\nfrom company documents - each answer backed by a clickable source and page number, so\nnothingistaken onfaith.",
+        "3.3 Success Metrics (KPIs)\nMetric\nTarget\nFaithfulness (RAGAS)\n\u22650.85\nAnswer Relevancy (RAGAS)\n\u22650.85\nContext Precision (RAGAS)\n\u22650.80\nContext Recall (RAGAS)\n\u22650.80\nP95 query latency\n\u22644 seconds\nWeeklyactiveusers (internal)\n\u2265 60% of target department\n\u226590%\nCitation click-through rate\n\u226540% (proxy fortrust/verification behavior)\n4. Target Users & Personas\n1. Priya - Compliance Analyst Needs precise, page-cited answers from policy documents for\naudit trails. Zero tolerance for hallucination.\n2. Raj - New Hire in Operations Needs fast answers to \"how do we do X\" without pinging\nsenior staff. Values speed and simplicity over configurability.\n3. Meera - Engineering Manager Wants to query internal architecture docs and RFCs across\nhundreds of pages without manually skimming.\n system health, and reviewing evaluation dashboards.\n5. Scope\n5.1 In Scope (v1)\n:PDFingestion,parsing,and chunkingpipeline",
+        "I canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin\nView retrieval/answer qualitymetrics\nI can catch quality regressions early\n06\nUS-\nEmployee\nGeta clear\"I don'tknow\"insteadofa\nI'm notmisledby afabricated\n07\nguess\nanswer\n7. Functional Requirements\n7.1DocumentIngestion Pipeline\nFR-1: System shall accept PDF uploads (single or bulk) via the admin panel.",
+        "Polished web chat interface (non-generic design system)\n RAGAS-based evaluation pipeline\nBasic admin panel for document upload/management\n5.2 Phase 2 (Future)\nRole-based access control per document set\nMulti-format ingestion (DOCX,HTML, Confluence, SharePoint)\n Feedback loop (thumbs up/down) feeding into retrieval tuning\n Analytics dashboard for usage and query trends\nssO integration\n6. User Stories\nAs a...\nI want to...\nSo tha...\nUS-\nEmployee\nAsk a question in plain language\nI get an answer without reading full\n01\ndocuments\nUS-\nEmployee\nSee the exact source/page for each\nI can verify and trust the response\n02\nanswer\nUS-\nEmployee\nContinueaconversationwithfollow-\nIdon't have to repeat context\n03\nupquestions\nUS-\nCompliance\nExport a Q&A session with citations\nI canattachittoanauditrecord\n04\nAnalyst\nUS-\nAdmin\nUpload newPDF documents\nThe knowledge base stays current\n05\nUS-\nAdmin",
+        "10.Technology Stack\nLayer\nTechnology\nBackend API\nFastAPI (Python)\nFrontend\nStreamlit (v1) \u2192 migration path to React/Next.js for production-grade custom UI\nVector Store\nChromaDB\nKeyword Search\nBM25 (rank-bm25/Elasticsearchfor scale)\nRe-ranking\nCross-encoder (e.g., ms -marco-MiniLM)\nLLM&Embeddings\nOpenAI(GPT-4-class model +(text-embedding-3)\nOrchestration\nLangChain\nEvaluation\nRAGAS\nDeployment\nDockercontainers;cloud VMorKubernetes\n11. UI/UX Design Direction - \"Doesn't Look Like AI\"\nA key product requirement is that the interface reads as a serious internal enterprise tool -\ncloser to Notion, Linear, or a professional knowledge base not a generic chatbot bubble UI\nwith a robot avatar and purple gradients.\n11.1 Design Principles\nNo AIcliches: no robot/sparkle icons, no purple-to-blue gradients, no\"Hi, I'm your AI\nassistant i\" copy."
+      ],
+      "context_metas": [
+        {
+          "page_number": 1,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 3
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 4
+        },
+        {
+          "page_number": 4,
+          "source_file": "RAGG.pdf"
+        },
+        {
+          "source_file": "RAGG.pdf",
+          "page_number": 8
+        }
+      ],
+      "ground_truth": "NOT_IN_DOCS",
+      "expected_source": null,
+      "expected_page": null,
+      "answer_in_docs": false,
+      "category": "not_in_docs"
+    }
+  ]
+}

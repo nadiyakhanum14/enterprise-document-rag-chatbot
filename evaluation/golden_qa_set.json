@@ -1,0 +1,222 @@
+[
+  {
+    "id": "Q001",
+    "category": "factual",
+    "question": "What is the Enterprise Document RAG Chatbot according to the executive summary?",
+    "ground_truth": "The Enterprise Document RAG Chatbot is an internal knowledge assistant that lets employees ask natural-language questions and get accurate, grounded answers pulled directly from company documents, with each answer backed by a clickable source and page number.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 1,
+    "answer_in_docs": true,
+    "notes": "Section 1: Executive Summary (Page 1)"
+  },
+  {
+    "id": "Q002",
+    "category": "factual",
+    "question": "What is the document owner and status of the PRD?",
+    "ground_truth": "The document owner is Product/Engineering Lead, and the status is Draft v1.0, last updated September 13, 2026.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 1,
+    "answer_in_docs": true,
+    "notes": "PRD Header metadata (Page 1)"
+  },
+  {
+    "id": "Q003",
+    "category": "factual",
+    "question": "Who are the designated stakeholders for this project?",
+    "ground_truth": "The stakeholders are Engineering, Data/ML, Design, Compliance, and End Users.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 1,
+    "answer_in_docs": true,
+    "notes": "PRD Header metadata (Page 1)"
+  },
+  {
+    "id": "Q004",
+    "category": "factual",
+    "question": "What core problem statement and pain points does this system address?",
+    "ground_truth": "Knowledge is locked in unsearchable PDFs causing employees to waste time searching, generic LLM chatbots hallucinate or fabricate answers causing loss of trust, and answers lack traceability to source material so they cannot be verified in decisions or audits.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 2,
+    "answer_in_docs": true,
+    "notes": "Section 2: Problem Statement (Page 2)"
+  },
+  {
+    "id": "Q005",
+    "category": "specific_detail",
+    "question": "What are the non-goals explicitly listed as out of scope for v1?",
+    "ground_truth": "Non-goals out of scope for v1 are: multi-modal input (images, scanned handwriting, video), real-time document editing or write-back into source PDFs, public-facing or external customer deployment, and multi-tenant SaaS billing infrastructure.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 2,
+    "answer_in_docs": true,
+    "notes": "Section 3.2: Non-Goals (Page 2)"
+  },
+  {
+    "id": "Q006",
+    "category": "specific_detail",
+    "question": "What are the target KPIs for RAGAS faithfulness, answer relevancy, and query latency?",
+    "ground_truth": "Faithfulness target is ≥0.85, Answer Relevancy target is ≥0.85, Context Precision target is ≥0.80, Context Recall target is ≥0.80, and P95 query latency is ≤4 seconds.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 3,
+    "answer_in_docs": true,
+    "notes": "Section 3.3: Success Metrics (Page 3)"
+  },
+  {
+    "id": "Q007",
+    "category": "specific_detail",
+    "question": "Who is Raj and what does he value in the tool?",
+    "ground_truth": "Raj is a New Hire in Operations who needs fast answers to 'how do we do X' without pinging senior staff, and he values speed and simplicity over configurability.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 3,
+    "answer_in_docs": true,
+    "notes": "Section 4: Target Users & Personas (Page 3)"
+  },
+  {
+    "id": "Q008",
+    "category": "specific_detail",
+    "question": "Who is Priya and what are her requirements?",
+    "ground_truth": "Priya is a Compliance Analyst who needs precise, page-cited answers from policy documents for audit trails, with zero tolerance for hallucination.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 3,
+    "answer_in_docs": true,
+    "notes": "Section 4: Target Users & Personas (Page 3)"
+  },
+  {
+    "id": "Q009",
+    "category": "specific_detail",
+    "question": "What should the system return when retrieval confidence is low, according to FR-11?",
+    "ground_truth": "According to FR-11, the system shall return \"I don't have enough information in the provided documents\" when retrieval confidence is low, rather than fabricating an answer.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 5,
+    "answer_in_docs": true,
+    "notes": "Section 7.3: Functional Requirements FR-11 (Page 5)"
+  },
+  {
+    "id": "Q010",
+    "category": "specific_detail",
+    "question": "What are the backend REST endpoints specified under Section 7.4?",
+    "ground_truth": "The endpoints are POST /documents/upload for PDF ingestion, GET /documents for listing indexed documents, DELETE /documents/{id} for removing documents, GET /sessions/{id}/history for conversation history, and GET /health for system health status.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 5,
+    "answer_in_docs": true,
+    "notes": "Section 7.4: Backend (FastAPI) (Page 5)"
+  },
+  {
+    "id": "Q011",
+    "category": "factual",
+    "question": "What technologies are used in the technology stack for Vector Store, Keyword Search, and Re-ranking?",
+    "ground_truth": "ChromaDB is used for the Vector Store, BM25 (rank-bm25/Elasticsearch for scale) is used for Keyword Search, and a Cross-encoder (e.g., ms-marco-MiniLM) is used for Re-ranking.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 8,
+    "answer_in_docs": true,
+    "notes": "Section 10: Technology Stack (Page 8)"
+  },
+  {
+    "id": "Q012",
+    "category": "specific_detail",
+    "question": "What is the UI/UX design principle regarding AI cliches?",
+    "ground_truth": "No AI cliches: no robot/sparkle icons, no purple-to-blue gradients, and no 'Hi, I'm your AI assistant!' copy. The layout uses a workspace metaphor rather than a chat-toy metaphor.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 8,
+    "answer_in_docs": true,
+    "notes": "Section 11.1: Design Principles (Page 8)"
+  },
+  {
+    "id": "Q013",
+    "category": "specific_detail",
+    "question": "How are source citations presented in the user interface according to Section 11?",
+    "ground_truth": "Citations are first-class UI elements: inline citation chips are clickable pills rather than footnotes, and clicking opens a side panel with the highlighted source passage.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 8,
+    "answer_in_docs": true,
+    "notes": "Section 11.1: UI/UX Design Direction (Page 8)"
+  },
+  {
+    "id": "Q014",
+    "category": "synthesis",
+    "question": "What is the mitigation plan if the LLM hallucinates despite grounding constraints?",
+    "ground_truth": "The mitigation is strict prompt constraints combined with an 'insufficient information' refusal fallback and continuous faithfulness monitoring.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 10,
+    "answer_in_docs": true,
+    "notes": "Section 13: Risks & Mitigations (Page 10)"
+  },
+  {
+    "id": "Q015",
+    "category": "factual",
+    "question": "What is the total estimated rollout timeline across all phases?",
+    "ground_truth": "The total estimated timeline is approximately 13-15 weeks across Phase 0 through Phase 7.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 10,
+    "answer_in_docs": true,
+    "notes": "Section 14: Milestones & Rollout Plan (Page 10)"
+  },
+  {
+    "id": "Q016",
+    "category": "open_question",
+    "question": "What are the open questions listed in Section 15 of the PRD?",
+    "ground_truth": "The open questions are: 1. Which document set(s) launch first (HR policies, legal contracts, or engineering docs)? 2. Is self-hosted embedding/LLM required for compliance or is OpenAI API acceptable? 3. Is per-user access control needed at launch or Phase 2? 4. What is the retention policy for conversation history and session logs?",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 11,
+    "answer_in_docs": true,
+    "notes": "Section 15: Open Questions (Page 11)"
+  },
+  {
+    "id": "Q017",
+    "category": "factual",
+    "question": "What external resources and links are documented in the Appendix?",
+    "ground_truth": "The appendix lists RAGAS at https://github.com/explodinggradients/ragas, LangChain at https://python.langchain.com, and ChromaDB at https://www.trychroma.com.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 11,
+    "answer_in_docs": true,
+    "notes": "Section 16: Appendix (Page 11)"
+  },
+  {
+    "id": "Q018",
+    "category": "synthesis",
+    "question": "How does the system combine semantic search, BM25, and re-ranking in its retrieval pipeline?",
+    "ground_truth": "The system combines semantic search (dense embeddings) with BM25 keyword search in hybrid retrieval, merges candidates with score fusion, and uses a cross-encoder to re-rank the top candidates for high precision before passing them to the LLM.",
+    "expected_source": "RAGG.pdf",
+    "expected_page": 1,
+    "answer_in_docs": true,
+    "notes": "Synthesis of Section 1 and Section 9 (Pages 1 & 7)"
+  },
+  {
+    "id": "Q019",
+    "category": "not_in_docs",
+    "question": "What is the company's maternity leave and paternity leave allowance?",
+    "ground_truth": "NOT_IN_DOCS",
+    "expected_source": null,
+    "expected_page": null,
+    "answer_in_docs": false,
+    "notes": "Refusal test: parental leave policy is not in RAGG.pdf"
+  },
+  {
+    "id": "Q020",
+    "category": "not_in_docs",
+    "question": "What is the capital city of France?",
+    "ground_truth": "NOT_IN_DOCS",
+    "expected_source": null,
+    "expected_page": null,
+    "answer_in_docs": false,
+    "notes": "Refusal test: general world knowledge not in enterprise documents"
+  },
+  {
+    "id": "Q021",
+    "category": "not_in_docs",
+    "question": "What is the total quarterly budget allocated in USD for cloud infrastructure?",
+    "ground_truth": "NOT_IN_DOCS",
+    "expected_source": null,
+    "expected_page": null,
+    "answer_in_docs": false,
+    "notes": "Refusal test: financial dollar budgets are not in the PRD"
+  },
+  {
+    "id": "Q022",
+    "category": "not_in_docs",
+    "question": "Who is the Chief Executive Officer (CEO) of the enterprise?",
+    "ground_truth": "NOT_IN_DOCS",
+    "expected_source": null,
+    "expected_page": null,
+    "answer_in_docs": false,
+    "notes": "Refusal test: executive leadership personnel names are not in the document"
+  }
+]

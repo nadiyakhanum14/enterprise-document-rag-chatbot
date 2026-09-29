@@ -1,0 +1,45 @@
+version: "3.9"
+
+# Enterprise Document RAG Chatbot — Docker Compose
+#
+# Usage:
+#   docker compose up --build        # start the app
+#   docker compose run app python ingest.py  # run ingestion inside container
+
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      # Mount docs and chroma_db so data persists outside the container
+      - ./docs:/app/docs
+      - ./chroma_db:/app/chroma_db
+      - ./evaluation:/app/evaluation
+    restart: unless-stopped
+    command: ["streamlit", "run", "app.py"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./docs:/app/docs
+      - ./chroma_db:/app/chroma_db
+      - ./evaluation:/app/evaluation
+    restart: unless-stopped
+    command: ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
